@@ -12,7 +12,7 @@ const rotation = keyframes `
 const Spinner = styled.div `
     height: 30px;
     width: 30px;
-    border: 4px solid #f8049c;
+    border: 4px solid ${p => p.theme.primaryColor};
     border-radius: 50%;
     border-top: none;
     border-right: none;

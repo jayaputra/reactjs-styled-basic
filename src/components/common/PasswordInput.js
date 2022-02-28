@@ -29,7 +29,7 @@ const ToggleButton = styled.div `
     font-weight: bold;
     cursor: pointer;
     user-select: none;
-    color: black;
+    color: ${p => p.theme.primaryColor};
 `
 
 export function PasswordInput(props){

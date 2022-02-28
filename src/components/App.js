@@ -1,12 +1,15 @@
-import {createGlobalStyle} from 'styled-components';
+import {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from 'components/pages/Home';
 import Login from 'components/pages/Login';
+import LightTheme from 'themes/light';
+import DarkTheme from 'themes/dark';
+import { useState } from 'react';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #fff;
-    color: #222;
+    background-color: ${p => p.theme.bodyBackgroundColor};
+    color:  ${p => p.theme.bodyFontColor};
     height: 100vh;
     margin: 0;
     padding-top: 80px;
@@ -15,19 +18,20 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+  const [theme, setTheme] = useState(LightTheme);
+  
   return (
-    <>
+    <ThemeProvider theme={{...theme, setTheme: () => {
+      setTheme(s => s.id === 'light' ? DarkTheme : LightTheme);
+    }}}>
     <GlobalStyle />
       <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-      
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
       </Router>
-      
-
-    </>
+    </ThemeProvider>
   );
 }
 
