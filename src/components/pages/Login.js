@@ -70,7 +70,7 @@ export default function Login(){
                     </Button>
                     {!loading &&
                     <>
-                        <div>or</div>
+                        <div className='alt-text'>or</div>
                         <Button secondary type="button">
                             Register
                         </Button>

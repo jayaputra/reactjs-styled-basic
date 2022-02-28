@@ -10,9 +10,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${p => p.theme.bodyBackgroundColor};
     color:  ${p => p.theme.bodyFontColor};
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    padding-top: 80px;
     font-family: 'Heebo', sans-serif;
   }
 `;
